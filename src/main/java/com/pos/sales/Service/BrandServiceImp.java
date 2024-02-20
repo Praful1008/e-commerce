@@ -21,4 +21,5 @@ public class BrandServiceImp implements BrandService{
     public Brand addBrand(Brand brand){
         return this.brandRepository.save(brand);
     }
+
 }
