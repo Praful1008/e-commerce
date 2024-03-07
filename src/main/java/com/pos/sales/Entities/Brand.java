@@ -1,6 +1,7 @@
 package com.pos.sales.Entities;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,10 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Brand")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Brand Test")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
