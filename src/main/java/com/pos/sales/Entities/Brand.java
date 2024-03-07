@@ -21,4 +21,8 @@ public class Brand {
     @OneToMany(mappedBy = "brand")
     @JsonIgnoreProperties("brand")
     private List<Product> products;
+    public Brand(String brandName, String category){
+        this.brandName = brandName;
+        this.category = category;
+    }
 }
