@@ -1,14 +1,10 @@
 package com.pos.sales.Entities;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 import lombok.Data;
 
 @Data
@@ -17,7 +13,7 @@ import lombok.Data;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Product Test")
+@Table(name = "Product")
 public class Product {
 
     @Id
