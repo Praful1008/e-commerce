@@ -1,11 +1,20 @@
 package com.pos.sales.Entities;
-
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 @Entity
-@Table(name = "Product")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Product Test")
 public class Product {
 
     @Id
@@ -17,56 +26,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("products")
     private Brand brand;
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Product(int id, String barcode, String name, double mrp, Brand brand) {
-        this.id = id;
-        this.barcode = barcode;
-        this.name = name;
-        this.mrp = mrp;
-        this.brand = brand;
-    }
-
-    public Product() {}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getMrp() {
-        return mrp;
-    }
-
-    public void setMrp(double mrp) {
-        this.mrp = mrp;
-    }
 }
