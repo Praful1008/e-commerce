@@ -20,8 +20,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String barcode;
-    private int brand_category_id;
-    private String productName;
+    private String name;
     private double mrp;
 
     @ManyToOne

@@ -3,6 +3,7 @@ package com.pos.sales.Controller;
 
 import com.pos.sales.Entities.Brand;
 import com.pos.sales.Service.BrandService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,13 +47,9 @@ public class BrandController {
         }
     }
 
-    @GetMapping("/brands/brandname")
-    public List<Brand> getAllByBrandName(){
-        return this.brandService.findAllByBrandName("Veena");
-    }
-
-    @GetMapping("/brands/brand_category")
-    public Brand getByBrandAndCategory(){
-        return this.brandService.findByBrandAndCategory("Pratik", "Industrialist");
+    @PutMapping("/brands/{brandId}")
+    public Brand updateBrand(@RequestBody Brand brand, @PathVariable("brandId") int brandId)
+    {
+        return this.brandService.updateBrand(brandId, brand);
     }
 }

@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductController {
 
     @Autowired
@@ -37,5 +38,11 @@ public class ProductController {
         catch (Exception e){
             System.out.println("some error occurred!");
         }
+    }
+
+    @PutMapping("/product/{productId}")
+    public Product updateProduct(@PathVariable("productId") int productId, @RequestBody Product product){
+        this.productService.updateProduct(productId, product);
+        return null;
     }
 }

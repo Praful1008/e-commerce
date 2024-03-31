@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BrandService {
@@ -27,10 +28,9 @@ public class BrandService {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
-                System.out.println(this.findByBrandAndCategory(columns[0], columns[1]));
                 if (findByBrandAndCategory(columns[0],columns[1]) == null){
                     Brand brand = new Brand(columns[0], columns[1]);
-                    this.brandRepository.save(brand);
+                    this.addBrand(brand);
                 }
             }
         } catch (Exception e) {
@@ -46,5 +46,18 @@ public class BrandService {
         return this.brandRepository.findAllByBrandName(brandName);
     }
 
+    public void deleteBrand(Brand brand){
+        this.brandRepository.delete(brand);
+    }
 
+    public Brand updateBrand(int brandId, Brand new_brand){
+        Optional<Brand> optionalBrand = this.brandRepository.findById(brandId);
+        if (optionalBrand.isPresent()) {
+            Brand old_brand = optionalBrand.get();
+            new_brand.setId(old_brand.getId());
+            return this.brandRepository.save(new_brand);
+        }
+        else
+            return null;
+    }
 }
